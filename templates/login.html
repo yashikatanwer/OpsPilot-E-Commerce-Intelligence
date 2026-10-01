@@ -1,0 +1,19 @@
+{% extends "auth_base.html" %}
+{% block title %}Login | OpsPilot{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <div class="auth-brand">OpsPilot</div>
+  <p class="auth-subtitle">E-commerce Intelligence Platform</p>
+  <h1>Welcome back</h1>
+  <p class="muted">Sign in to continue to your analytics workspace.</p>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form method="post" class="auth-form">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="you@example.com" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <button class="btn auth-btn" type="submit">Sign In</button>
+  </form>
+  <p class="auth-switch">Don't have an account? <a href="{{ url_for('signup') }}">Create one</a></p>
+</div>
+{% endblock %}

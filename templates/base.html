@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}OpsPilot{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-name">OpsPilot</div><div class="brand-sub">E-commerce Intelligence</div></div>
+    <nav class="nav">
+      <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">🏠 <span>Dashboard</span></a>
+      <a class="nav-link {% if request.endpoint in ['upload'] %}active{% endif %}" href="{{ url_for('upload') }}">📤 <span>Upload Data</span></a>
+      <a class="nav-link {% if request.endpoint == 'analytics' %}active{% endif %}" href="{{ url_for('analytics') }}">📊 <span>Analytics</span></a>
+      <a class="nav-link {% if request.endpoint == 'ai_insights' %}active{% endif %}" href="{{ url_for('ai_insights') }}">🤖 <span>Insights</span></a>
+      <a class="nav-link {% if request.endpoint == 'reports' %}active{% endif %}" href="{{ url_for('reports') }}">📄 <span>Reports</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="reset-link" href="{{ url_for('reset') }}">↻ Start with a new dataset</a>
+      <div class="admin">● {{ user_name|default("User") }}</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar"><span>🔔</span><strong>{{ user_name|default("User") }}</strong><a class="btn secondary" style="padding:8px 12px;font-size:12px" href="{{ url_for('logout') }}">Logout</a></div>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block title %}Upload Data | OpsPilot{% endblock %}
+{% block content %}
+<div class="hero"><div class="eyebrow">Data Inspection</div><h1>Upload E-commerce Data</h1><p>Upload an Excel or CSV file. OpsPilot checks the structure first, then analyzes the complete supported dataset.</p></div>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+<div class="card upload-box"><div class="upload-icon">📤</div><h2>Choose your dataset</h2><p>Supported: .xlsx, .xls and .csv. Common order/sales fields are detected automatically, including different naming conventions.</p><form method="post" enctype="multipart/form-data"><input class="file-input" type="file" name="file" accept=".xlsx,.xls,.csv" required><button class="btn" type="submit">Analyze Dataset</button></form></div>
+<div class="grid-3 section"><div class="card insight"><h3>Flexible mapping</h3><p>Order ID, Invoice, Product Name, Description, Quantity, Revenue and similar common fields are recognized.</p></div><div class="card insight"><h3>Derived revenue</h3><p>If no revenue field exists, OpsPilot can calculate revenue from Quantity × Unit Price.</p></div><div class="card insight"><h3>No invented metrics</h3><p>Optional metrics remain unavailable when their required fields are missing.</p></div></div>
+{% endblock %}
