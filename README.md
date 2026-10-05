@@ -356,3 +356,4 @@ It supports:
 - Multiple compatible e-commerce sheets in one workbook
 
 The application only displays metrics supported by the uploaded data and does not create fake values when information is missing.
+
